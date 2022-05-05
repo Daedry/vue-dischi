@@ -26,7 +26,7 @@ div{
         
         span{
             &:hover{
-            color: #adff2f;
+            color: #1ed760;
             cursor: pointer;
         }
         }

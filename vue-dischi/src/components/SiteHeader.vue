@@ -1,34 +1,31 @@
 <template>
   <header>
-      <nav>
-        <div class="logo">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" alt="">
-        </div>
-      </nav>
-    </header>
+    <nav>
+      <Logo />
+    </nav>
+  </header>
 </template>
 
 <script>
+import Logo from "@/components/LogoComponent";
+
 export default {
-name:'SiteHeader'
-}
+  name: "SiteHeader",
+  components: {
+    Logo,
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/scss/style.scss';
+@import "@/assets/scss/style.scss";
 
-header{
-  nav{
+header {
+  nav {
     width: 100%;
     height: 50px;
     background-color: $bg-nav;
-
-    .logo{
-      width: 40px;
-      padding: 0.2rem 0 ;
-      margin-left: 4rem;
-    }
+    border-top: 1px solid $bg-main;
   }
 }
-
 </style>
