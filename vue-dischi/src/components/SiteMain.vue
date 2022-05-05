@@ -2,114 +2,15 @@
   <main>
     <div class="container">
       <div class="wrapper d-flex wrap cg-2 rg-1">
-        <!-- <div class="card" v-for="(song, index) in music" :key="index"> -->
-        <div class="card col-2">
+        <div class="card col-2" v-for="(song, index) in music" :key="index">
+          <!-- <div class="card col-2"> -->
           <div class="card-img">
-            <img src="" alt="" />
+            <img :src="song.poster" alt="" />
           </div>
           <div class="card-text">
-            <h3></h3>
-            <p></p>
-            <p></p>
-          </div>
-        </div>
-
-        <div class="card col-2">
-          <div class="card-img">
-            <img src="" alt="" />
-          </div>
-          <div class="card-text">
-            <h3></h3>
-            <p></p>
-            <p></p>
-          </div>
-        </div>
-
-        <div class="card col-2">
-          <div class="card-img">
-            <img src="" alt="" />
-          </div>
-          <div class="card-text">
-            <h3></h3>
-            <p></p>
-            <p></p>
-          </div>
-        </div>
-
-        <div class="card col-2">
-          <div class="card-img">
-            <img src="" alt="" />
-          </div>
-          <div class="card-text">
-            <h3></h3>
-            <p></p>
-            <p></p>
-          </div>
-        </div>
-
-        <div class="card col-2">
-          <div class="card-img">
-            <img src="" alt="" />
-          </div>
-          <div class="card-text">
-            <h3></h3>
-            <p></p>
-            <p></p>
-          </div>
-        </div>
-
-        <div class="card col-2">
-          <div class="card-img">
-            <img src="" alt="" />
-          </div>
-          <div class="card-text">
-            <h3></h3>
-            <p></p>
-            <p></p>
-          </div>
-        </div>
-
-        <div class="card col-2">
-          <div class="card-img">
-            <img src="" alt="" />
-          </div>
-          <div class="card-text">
-            <h3></h3>
-            <p></p>
-            <p></p>
-          </div>
-        </div>
-
-        <div class="card col-2">
-          <div class="card-img">
-            <img src="" alt="" />
-          </div>
-          <div class="card-text">
-            <h3></h3>
-            <p></p>
-            <p></p>
-          </div>
-        </div>
-
-        <div class="card col-2">
-          <div class="card-img">
-            <img src="" alt="" />
-          </div>
-          <div class="card-text">
-            <h3></h3>
-            <p></p>
-            <p></p>
-          </div>
-        </div>
-
-        <div class="card col-2">
-          <div class="card-img">
-            <img src="" alt="" />
-          </div>
-          <div class="card-text">
-            <h3></h3>
-            <p></p>
-            <p></p>
+            <h3>{{ song.title }}</h3>
+            <p>{{ song.author }}</p>
+            <p>{{ song.year }}</p>
           </div>
         </div>
       </div>
@@ -132,9 +33,13 @@ export default {
   methods: {
     callApi() {
       axios.get(this.API_URL).then((response) => {
-        this.music = response.data;
+        this.music = response.data.response;
       });
     },
+  },
+
+  mounted() {
+    this.callApi();
   },
 };
 </script>
@@ -147,7 +52,7 @@ main {
     background-color: $bg-main;
 
     .wrapper {
-      border: 2px solid red;
+    //   border: 2px solid red;
       width: 1000px;
       height: 100%;
       margin: auto;
@@ -157,14 +62,14 @@ main {
         height: 260px;
         //   aspect-ratio: 1 / 1.2;
         margin: 0.75rem auto;
-        border: 2px solid rgb(6, 231, 62);
+        // border: 2px solid rgb(6, 231, 62);
         background-color: $bg-nav;
 
         .card-img {
           width: 80%;
           aspect-ratio: 1 / 1;
           margin: 1rem auto;
-          border: 1px solid rgb(200, 146, 255);
+        //   border: 1px solid rgb(200, 146, 255);
           img {
             object-position: center;
             object-fit: contain;
@@ -172,19 +77,22 @@ main {
         }
 
         .card-text {
-          width: 80%;
-          aspect-ratio: 1 / 0.6;
+        //   width: 0%;
+          aspect-ratio: 1 / 0.5;
           margin: 1rem auto;
-          border: 1px solid rgb(194, 191, 33);
+        //   border: 1px solid rgb(194, 191, 33);
+          text-align: center;
 
           h3 {
             color: $text-white;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 16px;
           }
 
           p {
-
             color: $text-gray;
+            font-size: 14px;
+
           }
         }
       }
