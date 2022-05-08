@@ -2,17 +2,7 @@
   <main>
     <div class="container">
       <div class="wrapper d-flex wrap cg-2 rg-1" v-if="!loading">
-        <!-- <MusicList :music="music"  v-for="(song, index) in music" :key="index"/> -->
-        <div class="card col-2" v-for="(song, index) in music" :key="index">
-          <div class="card-img">
-            <img :src="song.poster" alt="" />
-          </div>
-          <div class="card-text">
-            <h3>{{ song.title }}</h3>
-            <p>{{ song.author }}</p>
-            <p>{{ song.year }}</p>
-          </div>
-        </div>
+        <MusicList :song="song"  v-for="(song, index) in filteredMusic" :key="index"/>
       </div>
       <!-- /.wrapper -->
       <div class="load" v-else>
@@ -25,12 +15,13 @@
 
 <script>
 import axios from "axios";
-// import MusicList from "@/components/MusicListComponent";
+import state from '@/state.js';
+import MusicList from "@/components/MusicListComponent";
 
 export default {
   name: "SiteMain",
   components: {
-    // MusicList,
+    MusicList,
   },
 
   data() {
@@ -57,6 +48,16 @@ export default {
           this.error = `Sorry There is a problem! ${error}`;
         });
     },
+  },
+
+  computed: {
+    filteredMusic() {
+        return this.music.filter(song => {
+          return song.genre.toLowerCase().includes(state.searchGenre.toLowerCase())
+          // return song.title.toLowerCase().includes(state.searchText.toLowerCase());
+        })
+     
+    }
   },
 
   mounted() {

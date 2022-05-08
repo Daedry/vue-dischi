@@ -6,6 +6,7 @@
     <div class="card-text">
       <h3>{{ song.title }}</h3>
       <p>{{ song.author }}</p>
+      <!-- <p>{{song.genre}}</p> -->
       <p>{{ song.year }}</p>
     </div>
   </div>
@@ -15,7 +16,7 @@
 export default {
   name: "MusicListComponent",
   props: {
-    music: Object,
+    song: Object,
   },
 };
 </script>
